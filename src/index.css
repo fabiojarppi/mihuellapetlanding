@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap');
+
+:root {
+  --chocolate-oscuro: #4E342E;
+  --crema-hueso: #FEFBF1;
+  --verde-menta: #8CCFB2;
+  --doro-antiguo: #F2C741;
+  --caramelo-medio: #A87C63;
+  --beige-lino: #F0E5D8;
+  
+  --bg-dark: #1A1412; /* Darker chocolate for background */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--crema-hueso);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Utils */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 4rem; /* Wider padding for editorial feel */
+}
+
+/* Minimalist Header Styles */
+.header-minimal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.5rem 0;
+  background: rgba(10, 10, 10, 0.6); /* Negro transparente para Glassmorphism */
+  backdrop-filter: blur(12px); /* Efecto cristal (Glassmorphism) */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: rgba(254, 251, 241, 0.7);
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--crema-hueso);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--doro-antiguo);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.btn-outline {
+  text-decoration: none;
+  color: var(--crema-hueso);
+  font-size: 0.85rem;
+  font-weight: 400;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(254, 251, 241, 0.3);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--crema-hueso);
+  color: var(--bg-dark);
+}
+
+/* Layout */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem 2rem;
+  width: 100%;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+/* Mobile utilities */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-only {
+    display: block !important;
+  }
+  
+  .mobile-flex {
+    display: flex !important;
+  }
+  
+  .responsive-flex-col {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 2rem !important;
+  }
+
+  .responsive-hero-img {
+    max-width: 60% !important;
+    margin: 0 auto !important;
+  }
+  
+  .responsive-video {
+    width: 85vw !important;
+    max-width: none !important;
+  }
+
+  .responsive-title {
+    font-size: 3.5rem !important;
+    text-align: center !important;
+  }
+  
+  .responsive-desc {
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+
+  h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  h2 {
+    font-size: 1.8rem !important;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only, .mobile-flex {
+    display: none !important;
+  }
+}
+
+/* Mobile Menu Styles */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(5, 3, 2, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.mobile-nav-link:active {
+  opacity: 0.5;
+}
